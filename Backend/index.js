@@ -37,29 +37,76 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  EmployeeModel.findOne({ email: email }).then((user) => {
+    const user = await EmployeeModel.findOne({
+      email: email,
+    });
+
     if (user) {
       if (user.password === password) {
         res.json({
           success: true,
-          massege: "Login Successfull!",
+          message: "Login Successful!",
+          name: user.name,
         });
       } else {
         res.json({
           success: false,
-          massege: "Incorrect password!",
+          message: "Incorrect password!",
         });
       }
     } else {
       res.json({
         success: false,
-        massege: "User not found, please SignUp!",
+        message: "User not found, please SignUp!",
       });
     }
-  });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.message,
+    });
+  }
+});
+
+app.post("/forgotPass", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Step 1: Check email exists
+    const user = await EmployeeModel.findOne({ email });
+
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "Email not found!",
+      });
+    }
+
+    // Step 2: If password not sent yet
+    if (!password) {
+      return res.json({
+        success: true,
+        message: "Email verified",
+      });
+    }
+
+    // Step 3: Update password
+    await EmployeeModel.updateOne({ email }, { $set: { password } });
+
+    res.json({
+      success: true,
+      message: "Password updated successfully!",
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.message,
+    });
+  }
 });
 
 app.listen(3001, () => {

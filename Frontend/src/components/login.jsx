@@ -15,17 +15,19 @@ function Login() {
     axios
       .post("http://localhost:3001/login", { email, password })
       .then((res) => {
-        console.log(res.data.massege);
+        console.log(res.data.message);
         if (res.data.success) {
-          alert(res.data.massege);
+          localStorage.setItem("name", res.data.name);
+           localStorage.setItem("isLogin", "true");
+          alert(res.data.message);
           navigate("/");
         } else {
-          alert(res.data.massege);
+          alert(res.data.message);
         }
       })
       .catch((err) => {
         console.log(err);
-        alert(res.data.massege);
+        alert(res.data.message);
       });
   };
   return (
@@ -42,6 +44,7 @@ function Login() {
                 className="form-control"
                 placeholder="Enter email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
@@ -52,6 +55,7 @@ function Login() {
                 className="form-control"
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
 
@@ -66,6 +70,9 @@ function Login() {
               Signup
             </Link>
           </p>
+          <a className="" href="/forgotPass">
+            Forgot Password
+          </a><br />
           <a href="/">Back to Home</a>
         </div>
       </div>
