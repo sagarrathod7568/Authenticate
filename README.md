@@ -4,4 +4,4 @@ Run Backend
 - npm start
 
 Run Frontend
--npm run dev
+- npm run dev
