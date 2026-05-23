@@ -13,16 +13,22 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/signup', { name, email, password })
+    axios
+      .post("http://localhost:3001/signup", { name, email, password })
       .then((res) => {
-        console.log(res);
-        alert("Signup successfully");
-        navigate("/login");
+        if (res.data.success) {
+          console.log(res, res.data.message);
+          alert(res.data.message);
+          navigate("/login");
+        } else {
+          console.log(res.data.message);
+          alert(res.data.message);
+        }
       })
       .catch((err) => {
-        alert("Signup failed");
         console.log(err);
-      })
+        alert("Signup failed");
+      });
   };
 
   return (

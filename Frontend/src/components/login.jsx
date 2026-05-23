@@ -14,21 +14,19 @@ function Login() {
     e.preventDefault();
     axios
       .post("http://localhost:3001/login", { email, password })
-      .then((res) => {        
-        console.log(res,"success");
-        // navigate("/");
-        if(res.data === "success"){
-          alert("Login successfully");
-            navigate("/");
-        }else{
-          alert("Login failed");
+      .then((res) => {
+        console.log(res.data.massege);
+        if (res.data.success) {
+          alert(res.data.massege);
+          navigate("/");
+        } else {
+          alert(res.data.massege);
         }
       })
-      .catch((err) =>{
-        alert("Login failed");
+      .catch((err) => {
         console.log(err);
-      })
-
+        alert(res.data.massege);
+      });
   };
   return (
     <>
@@ -57,7 +55,9 @@ function Login() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary w-100">Login</button>
+            <button type="submit" className="btn btn-primary w-100">
+              Login
+            </button>
           </form>
 
           <p className="text-center mt-3">
