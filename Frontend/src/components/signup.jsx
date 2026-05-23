@@ -45,6 +45,7 @@ function Signup() {
                 className="form-control"
                 placeholder="Enter name"
                 onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
 
@@ -55,6 +56,7 @@ function Signup() {
                 className="form-control"
                 placeholder="Enter email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
@@ -65,6 +67,7 @@ function Signup() {
                 className="form-control"
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
 
