@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Signup() {
   const [name, setName] = useState();
@@ -13,21 +14,33 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/signup", { name, email, password })
+    API.post("/auth/signup", { name, email, password })
       .then((res) => {
         if (res.data.success) {
           console.log(res, res.data.message);
-          alert(res.data.message);
+          Swal.fire({
+            icon: "success",
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
           navigate("/login");
         } else {
           console.log(res.data.message);
-          alert(res.data.message);
+          Swal.fire({
+            icon: "warning",
+            title: res.data.message,
+            timer: 3000,
+          });
         }
       })
       .catch((err) => {
         console.log(err);
-        alert("Signup failed");
+        Swal.fire({
+          icon: "error",
+          title: err,
+          timer: 3000,
+        });
       });
   };
 
@@ -76,12 +89,12 @@ function Signup() {
             </button>
           </form>
 
-          <p className="text-center mt-3">
-            Already have an account? <a href="/login">Login</a>
+          <p className="text-center mt-3 mb-1">
+            Already have an account?{" "}
+            <a className="text-decoration-none" href="/login">
+              Login
+            </a>
           </p>
-          <a className="" href="/">
-            Back to Home
-          </a>
         </div>
       </div>
     </>

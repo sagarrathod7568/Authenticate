@@ -2,33 +2,54 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/login", { email, password })
-      .then((res) => {
-        console.log(res.data.message);
-        if (res.data.success) {
-          localStorage.setItem("name", res.data.name);
-           localStorage.setItem("isLogin", "true");
-          alert(res.data.message);
-          navigate("/");
-        } else {
-          alert(res.data.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(res.data.message);
+
+    try {
+      const res = await API.post("/auth/login", {
+        email,
+        password,
       });
+
+      if (res.data.success) {
+        // SAVE TOKEN
+        localStorage.setItem("token", res.data.token);
+
+        localStorage.setItem("name", res.data.name);
+
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: res.data.message,
+          timer: 3000,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+
+      Swal.fire({
+        icon: "error",
+        title: err,
+        timer: 3000,
+      });
+    }
   };
   return (
     <>
@@ -64,16 +85,15 @@ function Login() {
             </button>
           </form>
 
-          <p className="text-center mt-3">
+          <p className="text-center mt-3 mb-1">
             Don't have an account?{" "}
-            <Link to="/signup" href="/signup">
+            <Link className="text-decoration-none" to="/signup" href="/signup">
               Signup
             </Link>
           </p>
-          <a className="" href="/forgotPass">
+          <a className="text-decoration-none" href="/forgotPass">
             Forgot Password
-          </a><br />
-          <a href="/">Back to Home</a>
+          </a>
         </div>
       </div>
     </>

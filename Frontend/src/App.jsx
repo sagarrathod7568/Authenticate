@@ -1,23 +1,37 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Signup from "./components/signup";
-import Login from "./components/login";
-import Homepage from "./components/homepage";
-import ForgetPass from "./components/forgetPass";
+
+import Signup from "./components/Signup";
+
+import Login from "./components/Login";
+
+import Homepage from "./components/Homepage";
+
+import ForgetPass from "./components/ForgetPass";
+
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/forgotPass" element={<ForgetPass/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Homepage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/signup" element={<Signup />} />
+
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/forgotPass" element={<ForgetPass />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
