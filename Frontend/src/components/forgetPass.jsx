@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../api/axios";
+import Swal from "sweetalert2";
 
 const ForgetPass = () => {
   const [email, setEmail] = useState("");
@@ -14,19 +15,27 @@ const ForgetPass = () => {
     e.preventDefault();
 
     if (isVerified && password !== confirmPassword) {
-      alert("Passwords not matching!");
+      Swal.fire({
+        icon: "error",
+        title: "Passwords not matching!",
+        timer: 3000,
+      });
 
       return;
     }
 
-    axios
-      .post("http://localhost:3001/forgotPass", {
-        email,
-        password: isVerified ? password : "",
-      })
+    API.post("/auth/forgotPass", {
+      email,
+      password: isVerified ? password : "",
+    })
       .then((res) => {
         if (res.data.success) {
-          alert(res.data.message);
+          Swal.fire({
+            icon: "success",
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
           // Email verified
           if (!isVerified) {
@@ -36,7 +45,13 @@ const ForgetPass = () => {
             navigate("/login");
           }
         } else {
-          alert(res.data.message);
+          //   alert(res.data.message);
+          Swal.fire({
+            icon: "warning",
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       })
       .catch((err) => {
@@ -59,6 +74,7 @@ const ForgetPass = () => {
                 className="form-control"
                 placeholder="Enter email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
