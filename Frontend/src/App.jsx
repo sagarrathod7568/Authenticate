@@ -2,13 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Signup from "./components/Signup";
+import Signup from "./components/Signup1";
 
-import Login from "./components/Login";
+import Login from "./components/Login1";
 
-import Homepage from "./components/Homepage";
+import Homepage from "./components/Homepage1";
 
-import ForgetPass from "./components/ForgetPass";
+import ForgetPass from "./components/ForgetPass1";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
