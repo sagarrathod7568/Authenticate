@@ -59,6 +59,31 @@ const ForgetPass = () => {
       });
   };
 
+  const handleCancel = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to cancel?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+
+      width: "400px",
+      height: "600px",
+
+      customClass: {
+        popup: "small-popup",
+        title: "small-title",
+      },
+    }).then((result) => {
+      // IF YES CLICKED
+      if (result.isConfirmed) {
+        navigate("/login");
+      }
+    });
+  };
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center vh-100">
@@ -110,6 +135,12 @@ const ForgetPass = () => {
               {isVerified ? "Update Password" : "Verify Email"}
             </button>
           </form>
+          <button
+            onClick={handleCancel}
+            className="btn btn-secondary mt-2 w-100"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </>
