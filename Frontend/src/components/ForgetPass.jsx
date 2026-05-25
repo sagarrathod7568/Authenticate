@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import Swal from "sweetalert2";
-import "../assets/Forgotpass.css"
 
 const ForgetPass = () => {
   const [email, setEmail] = useState("");
