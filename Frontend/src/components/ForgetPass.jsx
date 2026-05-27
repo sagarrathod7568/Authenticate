@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const ForgetPass = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isVerified, setIsVerified] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
   const navigate = useNavigate();
 
@@ -69,14 +72,6 @@ const ForgetPass = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes",
       cancelButtonText: "No",
-
-      width: "400px",
-      height: "600px",
-
-      customClass: {
-        popup: "small-popup",
-        title: "small-title",
-      },
     }).then((result) => {
       // IF YES CLICKED
       if (result.isConfirmed) {
@@ -86,7 +81,7 @@ const ForgetPass = () => {
   };
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="container forgotpass-page d-flex justify-content-center align-items-center vh-100">
         <div className="card p-4 shadow">
           <h3 className="text-center mb-3">Forgot Password</h3>
 
@@ -109,24 +104,36 @@ const ForgetPass = () => {
                   <label>New Password</label>
 
                   <input
-                    type="password"
+                    type={showPassword1 ? "text" : "password"}
                     className="form-control"
                     placeholder="Enter new password"
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <span
+                    className="forgotpass1-eye-icon"
+                    onClick={() => setShowPassword1(!showPassword1)}
+                  >
+                    {showPassword1 ? <FaEyeSlash /> : <FaEye />}
+                  </span>
                 </div>
 
                 <div className="mb-3">
                   <label>Confirm Password</label>
 
                   <input
-                    type="password"
+                    type={showPassword2 ? "text" : "password"}
                     className="form-control"
                     placeholder="Re-enter password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                   />
+                  <span
+                    className="forgotpass2-eye-icon"
+                    onClick={() => setShowPassword2(!showPassword2)}
+                  >
+                    {showPassword2 ? <FaEyeSlash /> : <FaEye />}
+                  </span>
                 </div>
               </>
             )}

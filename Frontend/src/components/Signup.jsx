@@ -5,12 +5,15 @@ import { useState } from "react";
 import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import "../assets/custome.css"
 
 function Signup() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ function Signup() {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="container signup-page d-flex justify-content-center align-items-center vh-100">
         <div className="card p-4 shadow">
           <h3 className="text-center mb-3">Signup</h3>
 
@@ -76,12 +79,18 @@ function Signup() {
             <div className="mb-3">
               <label>Password</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <span
+                className="signup-eye-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
 
             <button type="submit" className="btn btn-success w-100">

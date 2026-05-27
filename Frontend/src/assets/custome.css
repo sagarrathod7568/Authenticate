@@ -1,0 +1,15 @@
+.login-page, .signup-page, .forgotpass-page {
+  background: linear-gradient(
+  45deg,
+  #7b0fff,
+  #8d1bd3,
+  #1578db,
+  #7b0fff
+);
+
+  .card{
+    background-color: #f2fdff;
+    color: #222628;
+  }
+}
+
