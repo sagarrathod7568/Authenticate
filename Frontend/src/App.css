@@ -21,11 +21,41 @@
   padding: 0.5rem 1rem !important;
 }
 
+.login-eye-icon {
+  position: absolute;
+  right: 15%;
+  top: 53.5%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.signup-eye-icon {
+  position: absolute;
+  right: 15%;
+  top: 65.5%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.forgotpass1-eye-icon{
+  position: absolute;
+  right: 15%;
+  top: 46%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.forgotpass2-eye-icon{
+  position: absolute;
+  right: 15%;
+  top: 65%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
 /* Tablet */
 
 @media (max-width: 768px) {
-
   .swal2-popup {
     width: 18rem !important;
     font-size: 0.9rem !important;
@@ -38,14 +68,11 @@
   .swal2-html-container {
     font-size: 0.9rem !important;
   }
-
 }
-
 
 /* Mobile */
 
 @media (max-width: 480px) {
-
   .swal2-popup {
     width: 15rem !important;
     font-size: 0.8rem !important;
@@ -65,5 +92,4 @@
     font-size: 0.75rem !important;
     padding: 0.4rem 0.8rem !important;
   }
-
 }
