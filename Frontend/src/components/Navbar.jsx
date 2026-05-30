@@ -141,14 +141,14 @@ const Navbar = () => {
               <a className="nav-link" href="#ecosystem">
                 Ecosystem
               </a>
+              <a className="nav-link" href="#products-solutions">
+                Products & Solutions
+              </a>
               <a className="nav-link" href="#about-us">
                 About Us
               </a>
               <a className="nav-link" href="#our-platform">
                 Our Platform
-              </a>
-              <a className="nav-link" href="#products-solutions">
-                Products & Solutions
               </a>
               <a className="nav-link" href="#resources">
                 Resources
