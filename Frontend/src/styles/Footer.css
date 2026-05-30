@@ -1,0 +1,37 @@
+.footer-top-section{
+  background-color: #e6f3fb;
+
+  p {
+    border-bottom: 2px solid transparent;
+  }
+
+  p:hover {
+    color: #1578db;
+  }
+
+  p:active {
+    color: #1578db;
+    border-bottom: 2px solid #1578db;
+  }
+}
+
+footer{
+  background-color: #1476bd;
+}
+
+@media (max-width: 768px) {
+  .footer-top-section > div {
+    text-align: center;
+  }
+
+  .footer-top-section img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .footer-top-section .input-group {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
