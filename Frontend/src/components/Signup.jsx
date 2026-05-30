@@ -6,7 +6,7 @@ import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../assets/custome.css"
+import "../styles/custome.css"
 
 function Signup() {
   const [name, setName] = useState();

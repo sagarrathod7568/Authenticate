@@ -1,0 +1,63 @@
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.container-1 {
+  background-color: #e6f3fb;
+
+  a {
+    font-family: "DM Sans", Sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1577dd;
+  }
+
+  .container-contents {
+    .btn-group {
+      vertical-align: unset;
+    }
+  }
+
+  .login-details {
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    h1 {
+      margin: 0;
+      font-family: "DM Sans", Sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    button{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .dropdown-menu {
+    z-index: 9999;
+  }
+}
+
+.container-2 {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  a {
+    border-bottom: 2px solid transparent;
+  }
+
+  a:hover {
+    color: #1578db;
+  }
+
+  .nav-link:active {
+    color: #1578db;
+    border-bottom: 2px solid #1578db;
+  }
+}
