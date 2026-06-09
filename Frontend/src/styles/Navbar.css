@@ -8,8 +8,11 @@
   a {
     font-family: "DM Sans", Sans-serif;
     font-size: 14px;
-    font-weight: 600;
-    color: #1577dd;
+    color: #222a65;
+  }
+
+  a:hover {
+    color: #1578db;
   }
 
   .container-contents {
@@ -30,10 +33,20 @@
       font-size: 14px;
       font-weight: 600;
     }
-    button{
+    button {
       margin: 0;
       font-size: 14px;
       font-weight: 600;
+      color: white;
+      background-color: #222a65;
+      border: none;
+    }
+  }
+
+  .user_Name {
+    color: #f8841d;
+    span {
+      color: #222a65;
     }
   }
 

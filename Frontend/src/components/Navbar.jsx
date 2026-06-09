@@ -102,8 +102,8 @@ const Navbar = () => {
           </div>
           {isLogin && (
             <div className="login-details">
-              <h1 className="text-dark">
-                Welcome! <span className="text-danger">{userName}</span>
+              <h1 className="user_Name">
+                Welcome! <span>{userName}</span>
               </h1>
               <button className="btn btn-danger" onClick={handleLogout}>
                 Logout
@@ -114,11 +114,13 @@ const Navbar = () => {
       </div>
       <div className=" container-fluid container-2">
         <div className="container navbar navbar-expand-lg navbar-light">
-          <img
-            src="https://egov-website-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/08/25123706/eGov-Foundation.png"
-            alt="logo"
-            width={100}
-          />
+          <a href="#homepage">
+            <img
+              src="https://egov-website-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/08/25123706/eGov-Foundation.png"
+              alt="logo"
+              width={100}
+            />
+          </a>
           <button
             className="navbar-toggler"
             type="button"
