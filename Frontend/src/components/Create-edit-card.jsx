@@ -12,7 +12,7 @@ const CardDetails = () => {
 
   return (
     <>
-      <h2 className="text-center" id="homepage">
+      <h2 className="text-center">
         Add Details🎉{" "}
       </h2>
       <div className="d-flex justify-content-center align-items-center">
