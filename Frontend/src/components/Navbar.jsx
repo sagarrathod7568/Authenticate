@@ -114,7 +114,7 @@ const Navbar = () => {
       </div>
       <div className=" container-fluid container-2">
         <div className="container navbar navbar-expand-lg navbar-light">
-          <a href="#homepage">
+          <a href="#areas-of-work">
             <img
               src="https://egov-website-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/08/25123706/eGov-Foundation.png"
               alt="logo"
