@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Features from "./Features";
 import Footer from "./Footer";
-import CardDetails from "./Create-edit-card";
 
 function Homepage() {
   const token = localStorage.getItem("token");
@@ -15,7 +14,6 @@ function Homepage() {
       {isLogin && (
         <>
           <Navbar />
-          <CardDetails />
           <Hero />
           <Features />
           <Footer />
